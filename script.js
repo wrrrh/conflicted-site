@@ -3,28 +3,34 @@ function addPhrase(text) {
   const phrase = document.createElement('div');
   phrase.className = 'phrase';
   phrase.textContent = text;
-  phrase.style.top = Math.random() * 90 + '%';
-  phrase.style.left = Math.random() * 90 + '%';
+
+  // 初始化位置：更大范围
+  let posX = Math.random() * 100;
+  let posY = Math.random() * 100;
+  phrase.style.left = posX + '%';
+  phrase.style.top = posY + '%';
 
   phrase.addEventListener('click', () => {
     phrase.classList.toggle('clicked');
   });
 
   container.appendChild(phrase);
-  animatePhrase(phrase); // 💡 添加动画
+  animatePhrase(phrase, posX, posY);
 }
 
-// 🎈 漂浮动画，调得更明显一些
-function animatePhrase(el) {
-  let posX = parseFloat(el.style.left);
-  let posY = parseFloat(el.style.top);
+// 🌀 更慢，更自由的漂浮动画
+function animatePhrase(el, startX, startY) {
+  let posX = startX;
+  let posY = startY;
 
   function move() {
-    posX += (Math.random() - 0.5) * 0.5;  // 比原来快一倍
-    posY += (Math.random() - 0.5) * 0.5;
+    // 更慢：速度降低到 0.1
+    posX += (Math.random() - 0.5) * 0.1;
+    posY += (Math.random() - 0.5) * 0.1;
 
-    posX = Math.max(0, Math.min(95, posX));
-    posY = Math.max(0, Math.min(95, posY));
+    // 更大范围：限制从 0 到 98%
+    posX = Math.max(0, Math.min(98, posX));
+    posY = Math.max(0, Math.min(98, posY));
 
     el.style.left = posX + '%';
     el.style.top = posY + '%';
