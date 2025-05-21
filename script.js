@@ -6,23 +6,22 @@ function addPhrase(text) {
   phrase.style.top = Math.random() * 90 + '%';
   phrase.style.left = Math.random() * 90 + '%';
 
-  // ✅ ❌ 这里绝对没有 alert 了
   phrase.addEventListener('click', () => {
     phrase.classList.toggle('clicked');
   });
 
   container.appendChild(phrase);
-  animatePhrase(phrase);
+  animatePhrase(phrase); // 💡 添加动画
 }
 
-// 🌀 添加缓慢漂浮动画
+// 🎈 漂浮动画，调得更明显一些
 function animatePhrase(el) {
   let posX = parseFloat(el.style.left);
   let posY = parseFloat(el.style.top);
 
   function move() {
-    posX += (Math.random() - 0.5) * 0.2;
-    posY += (Math.random() - 0.5) * 0.2;
+    posX += (Math.random() - 0.5) * 0.5;  // 比原来快一倍
+    posY += (Math.random() - 0.5) * 0.5;
 
     posX = Math.max(0, Math.min(95, posX));
     posY = Math.max(0, Math.min(95, posY));
