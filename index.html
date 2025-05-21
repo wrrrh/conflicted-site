@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>I Am Conflicted</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Emotional Wall</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="container">
-        <div class="note">I am conflicted</div>
-        <div class="note">我不甘心</div>
-        <div class="note">I am conflicted</div>
-        <div class="note">我不甘心</div>
-        <div class="note">I am conflicted</div>
-    </div>
-    <script src="script.js"></script>
+  <div id="overlay"></div>
+  <div id="phrase-container"></div>
+
+  <form id="phrase-form">
+    <input type="text" id="phrase-input" maxlength="120" placeholder="Enter your phrase (max 12 words)" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="script.js"></script>
 </body>
 </html>
