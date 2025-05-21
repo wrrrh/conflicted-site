@@ -76,4 +76,6 @@ body, html {
   border-radius: 5px;
   cursor: pointer;
 }
-
+.phrase.clicked {
+  transform: scale(1.5) rotate(1deg);
+}
