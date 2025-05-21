@@ -6,6 +6,7 @@ function addPhrase(text) {
   phrase.style.top = Math.random() * 90 + '%';
   phrase.style.left = Math.random() * 90 + '%';
 
+  // ✅ ❌ 这里绝对没有 alert 了
   phrase.addEventListener('click', () => {
     phrase.classList.toggle('clicked');
   });
@@ -14,17 +15,15 @@ function addPhrase(text) {
   animatePhrase(phrase);
 }
 
-// 🌀 随机缓慢移动函数
+// 🌀 添加缓慢漂浮动画
 function animatePhrase(el) {
   let posX = parseFloat(el.style.left);
   let posY = parseFloat(el.style.top);
 
   function move() {
-    // 随机微调
-    posX += (Math.random() - 0.5) * 0.5;
-    posY += (Math.random() - 0.5) * 0.5;
+    posX += (Math.random() - 0.5) * 0.2;
+    posY += (Math.random() - 0.5) * 0.2;
 
-    // 边界限制
     posX = Math.max(0, Math.min(95, posX));
     posY = Math.max(0, Math.min(95, posY));
 
@@ -50,4 +49,3 @@ document.getElementById('phrase-form').addEventListener('submit', function (e) {
   addPhrase(text);
   input.value = '';
 });
-
