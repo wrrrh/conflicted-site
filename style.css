@@ -1,37 +1,74 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #111;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+  position: relative;
 }
 
-#container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  z-index: -1;
 }
 
-.note {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #000;
-    padding: 10px 15px;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    font-size: 18px;
-    animation: float 10s infinite ease-in-out;
-    white-space: nowrap;
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.note:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-.note:nth-child(2) { top: 40%; left: 30%; animation-delay: 2s; }
-.note:nth-child(3) { top: 60%; left: 50%; animation-delay: 4s; }
-.note:nth-child(4) { top: 35%; left: 70%; animation-delay: 6s; }
-.note:nth-child(5) { top: 55%; left: 85%; animation-delay: 8s; }
+#phrase-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 
-@keyframes float {
-    0% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-    100% { transform: translateY(0) rotate(0deg); }
+.phrase {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  mix-blend-mode: overlay;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.3s ease;
+}
+
+.phrase:hover {
+  transform: scale(1.1);
+}
+
+#phrase-form {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+#phrase-input {
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+}
+
+#phrase-form button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
